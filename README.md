@@ -42,3 +42,18 @@ needs to be set to the target triple.
 ### Building
 Just run `make`. `shellcode.bin` will be built if there are no errors. I recommend running `objdump` from binutils on the binary just to
 sanity check the output. I have done limited testing of this template so ymmv.
+
+## Architectures
+The currently supported architectures are:
+ - x86_64-unknown-linux-gnu
+ - i686-unknown-linux-gnu
+ - armv7a-none-eabi
+ - aarch64-unknown-none
+ - mipsel-unknown-linux-musl
+ - mips64el-unknown-linux-muslabi64
+
+It should be pretty easy to add support for other mips or arm targets. Just copy the target configuration and add a new target triple in the
+`.cargo/config.toml` file. It might require some configuration of linker flags or change to linker script but probably nothing too complicated.
+
+## Contriburing
+I'm happy to accept PRs to add new architectures or to help with code size.
