@@ -19,7 +19,8 @@ use crate::syscalls::*;
 
 /// Entry point of the shellcode
 ///
-/// This is the function that you want to modify.
+/// This is the function that you want to modify. Other functions and modules can be added.
+/// Just make sure to check that everything is laid out properly in the binary.
 /// 
 /// The signature can be changed to whatever you want. It will take and return parameters in
 /// the standard sysv c abi.
