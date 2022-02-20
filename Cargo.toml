@@ -1,0 +1,22 @@
+[package]
+name = "shellcode"
+version = "0.1.0"
+edition = "2021"
+author = "James Johnson (jjohnsonjj1251@gmail.com)"
+description = "Template for making shellcode in rust for various architectures"
+readme = "README.md"
+license = "WTFPL"
+licese-file = "LICENSE"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+opt-level = "z"
+lto = true
+codegen-units = 1
