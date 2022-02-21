@@ -2,7 +2,7 @@
 A template project for writing shellcode in rust.
 
 The goal of this project is to make it easy to write shellcode for the major architectures in rust without a lot of custom configuration.
-While this template is not as generic as I wold have liked it to be, it makes it quite easy to get started.
+While this template is not as generic as I would have liked it to be, it makes it quite easy to get started.
 
 One of the drawbacks of this template is that the shellcode will not be the smallest. x86_64 and aarch64 optimize to be quite small, but
 the others can get a little bloated.
@@ -55,5 +55,5 @@ The currently supported architectures are:
 It should be pretty easy to add support for other mips or arm targets. Just copy the target configuration and add a new target triple in the
 `.cargo/config.toml` file. It might require some configuration of linker flags or change to linker script but probably nothing too complicated.
 
-## Contriburing
+## Contributing
 I'm happy to accept PRs to add new architectures or to help with code size.
