@@ -1,22 +1,29 @@
-# FIXME: point this to correct copy of strip
-STRIP=strip
-# FIXME: point this to correct copy of objcopy
-OBJCOPY=objcopy
-# FIXME: point this to the output binary of cargo
-TARGET=target/x86_64-unknown-linux-gnu/release/shellcode
+# FIXME: point this to bin directory of binutils
+CROSS_BINUTILS=/home/jaj/bin/aarch64-unknown-linux-gnu/bin
+
+STRIP=$(CROSS_BINUTILS)/strip
+OBJCOPY=$(CROSS_BINUTILS)/objcopy
+
+# FIXME: set this to the correct target triple
+TARGET=aarch64-unknown-none
+
+ELF_FILE=target/$(TARGET)/release/shellcode
 
 STRIP_OPTS=-s --strip-unneeded -x -X
 
-.PHONY: clean
+.PHONY: clean dis
 
 all: shellcode.bin
 
-shellcode.bin: $(TARGET)
-	$(STRIP) $(STRIP_OPTS) $(TARGET)
-	$(OBJCOPY) -O binary $(TARGET) shellcode.bin
+shellcode.bin: $(ELF_FILE)
+	$(STRIP) $(STRIP_OPTS) $(ELF_FILE)
+	$(OBJCOPY) -O binary $(ELF_FILE) shellcode.bin
 
-$(TARGET): src/*
-	cargo build --release
+$(ELF_FILE): src/*
+	cargo build --release --target $(TARGET)
+
+dis: $(ELF_FILE)
+	$(CROSS_BINUTILS)/objdump -d $(ELF_FILE)
 
 clean:
 	cargo clean
