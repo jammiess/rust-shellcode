@@ -11,7 +11,7 @@ ELF_FILE=target/$(TARGET)/release/shellcode
 
 STRIP_OPTS=-s --strip-unneeded -x -X
 
-.PHONY: clean
+.PHONY: clean dis
 
 all: shellcode.bin
 
@@ -21,6 +21,9 @@ shellcode.bin: $(ELF_FILE)
 
 $(ELF_FILE): src/*
 	cargo build --release --target $(TARGET)
+
+dis: $(ELF_FILE)
+	$(CROSS_BINUTILS)/objdump -d $(ELF_FILE)
 
 clean:
 	cargo clean
