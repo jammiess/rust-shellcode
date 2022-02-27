@@ -1,7 +1,4 @@
 [build]
-# FIXME: make this the target triple you want to compile for
-# should be one of the triples listed below
-target = "x86_64-unknown-linux-gnu"
 
 [target.x86_64-unknown-linux-gnu]
 rustflags = ["-C", "link-self-contained=no", "-C", "link-arg=-nostdlib", "-C", "link-arg=-nostartfiles",
