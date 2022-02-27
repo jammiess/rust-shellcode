@@ -13,20 +13,18 @@ rustflags = ["-C", "link-self-contained=no", "-C", "link-arg=-nostdlib", "-C", "
 
 [target.armv7a-none-eabi]
 rustflags = ["-C", "link-self-contained=no", "-C", "link-arg=-nostdlib",
-             "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--build-id=none", "-C", "link-arg=-static",
-             "-C", "link-arg=--strip-debug"]
+             "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--build-id=none", "-C", "link-arg=-static"]
 
 [target.aarch64-unknown-none]
 rustflags = ["-C", "link-self-contained=no", "-C", "link-arg=-nostdlib",
-             "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--build-id=none", "-C", "link-arg=-static",
-             "-C", "link-arg=--strip-debug"]
+             "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--build-id=none", "-C", "link-arg=-static"]
 
 [target.mipsel-unknown-linux-musl]
 rustflags = ["-C", "link-self-contained=no", "-C", "linker-flavor=ld.lld", "-C", "link-arg=--nostdlib",
              "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--static", "-C", "link-arg=--build-id=none",
-             "-C", "link-arg=--discard-all", "-C", "link-arg=--gc-sections", "-C", "target-feature=+crt-static"]
+             "-C", "target-feature=+crt-static"]
 
 [target.mips64el-unknown-linux-muslabi64]
 rustflags = ["-C", "link-self-contained=no", "-C", "linker-flavor=ld.lld", "-C", "link-arg=--nostdlib",
              "-C", "link-arg=-Tlinker.ld", "-C", "link-arg=--static", "-C", "link-arg=--build-id=none",
-             "-C", "link-arg=--discard-all", "-C", "link-arg=--gc-sections", "-C", "target-feature=+crt-static"]
+             "-C", "target-feature=+crt-static"]

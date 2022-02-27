@@ -20,7 +20,7 @@ SECTIONS
         *(.data)
     }
 
-    /DISCARD/ :
+    .debug :
     {
         *(.interp)
         *(.comment)
