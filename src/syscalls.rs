@@ -1,4 +1,4 @@
-//! Example write and exit syscall functions for the various architectures
+//! Example write and exit syscall functions for various architectures
 
 use core::arch::asm;
 
@@ -21,12 +21,13 @@ pub unsafe fn write(fd: usize, msg: *const u8, len: usize) -> Result<usize, ()> 
 }
 
 #[cfg(target_arch = "x86_64")]
-pub unsafe fn exit(ret: usize) {
+pub unsafe fn exit(ret: usize) -> ! {
     let sys_nr: usize = 60;
     asm!(
     "syscall",
     in("rax") sys_nr,
     in("rdi") ret,
+    options(noreturn),
     );
 }
 
@@ -49,12 +50,13 @@ pub unsafe fn write(fd: usize, msg: *const u8, len: usize) -> Result<usize, ()> 
 }
 
 #[cfg(target_arch = "x86")]
-pub unsafe fn exit(ret: usize) {
+pub unsafe fn exit(ret: usize) -> ! {
     let sys_nr: usize = 60;
     asm!(
     "syscall",
     in("eax") sys_nr,
     in("ebx") ret,
+    options(noreturn),
     );
 }
 
@@ -77,12 +79,13 @@ pub unsafe fn write(fd: usize, msg: *const u8, len: usize) -> Result<usize, ()> 
 }
 
 #[cfg(target_arch = "arm")]
-pub unsafe fn exit(ret: usize) {
+pub unsafe fn exit(ret: usize) -> ! {
     let sys_nr: usize = 60;
     asm!(
     "svc #0",
     in("r7") sys_nr,
     in("r0") ret,
+    options(noreturn),
     );
 }
 
@@ -105,12 +108,13 @@ pub unsafe fn write(fd: usize, msg: *const u8, len: usize) -> Result<usize, ()> 
 }
 
 #[cfg(target_arch = "aarch64")]
-pub unsafe fn exit(ret: usize) {
+pub unsafe fn exit(ret: usize) -> ! {
     let sys_nr: usize = 60;
     asm!(
     "svc #0",
     in("x8") sys_nr,
     in("x0") ret,
+    options(noreturn),
     );
 }
 
@@ -133,11 +137,12 @@ pub unsafe fn write(fd: usize, msg: *const u8, len: usize) -> Result<usize, ()> 
 }
 
 #[cfg(any(target_arch = "mips", target_arch = "mips64"))]
-pub unsafe fn exit(ret: usize) {
+pub unsafe fn exit(ret: usize) -> ! {
     let sys_nr: usize = 60;
     asm!(
     "syscall",
     in("$2") sys_nr,
     in("$4") ret,
+    options(noreturn),
     );
 }
