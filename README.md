@@ -60,5 +60,5 @@ The currently supported architectures are:
 It should be pretty easy to add support for other mips or arm targets. Just copy the target configuration and add a new target triple in the
 `.cargo/config.toml` file. It might require some configuration of linker flags or change to linker script but probably nothing too complicated.
 
-## Contriburing
+## Contributing
 I'm happy to accept PRs to add new architectures or to help with code size.
